@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The personal portfolio and CV of Abdelrahman Bahaa."
+    />
+    <title>Abdelrahman Bahaa — Portfolio &amp; CV</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --background: #08080d;
+        --surface: #101018;
+        --surface-raised: #171622;
+        --text: #f5f2fa;
+        --muted: #a39bb5;
+        --accent: #bd78f5;
+        --line: #272332;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: "Segoe UI", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 12%, rgb(189 120 245 / 24%) 1px, transparent 1.7px) 0 0 / 150px 145px,
+          radial-gradient(circle at 77% 61%, rgb(189 120 245 / 20%) 1px, transparent 1.8px) 35px 25px / 210px 190px,
+          radial-gradient(ellipse at 77% 15%, rgb(104 48 145 / 14%), transparent 34rem),
+          var(--background);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        width: min(100% - 3rem, 1000px);
+        margin-inline: auto;
+      }
+
+      .topbar {
+        position: sticky;
+        z-index: 2;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+        border-bottom: 1px solid var(--line);
+        background: rgb(8 8 13 / 92%);
+        backdrop-filter: blur(14px);
+      }
+
+      .monogram {
+        color: var(--accent);
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: clamp(0.8rem, 3vw, 2.1rem);
+      }
+
+      .nav-links a {
+        color: #797287;
+        font-size: 0.73rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--accent);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+        align-items: center;
+        gap: 2rem;
+        min-height: min(700px, calc(100vh - 68px));
+        padding-block: 4rem;
+      }
+
+      .availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin: 0 0 1.7rem;
+        padding: 0.42rem 0.85rem;
+        border: 1px solid #392849;
+        border-radius: 99px;
+        color: #c493e6;
+        background: rgb(189 120 245 / 7%);
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .availability::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #c98cff;
+        box-shadow: 0 0 12px var(--accent);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 560px;
+        margin-bottom: 1rem;
+        font-family: var(--sans);
+        font-size: clamp(3.5rem, 8.3vw, 6.1rem);
+        font-weight: 800;
+        letter-spacing: -0.075em;
+        line-height: 0.92;
+      }
+
+      h1 span {
+        display: block;
+        color: #bb70f5;
+      }
+
+      .hero-role {
+        margin: 2rem 0 0.35rem;
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 650;
+      }
+
+      .hero-location,
+      .hero-description {
+        color: var(--muted);
+      }
+
+      .hero-location {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero-description {
+        max-width: 530px;
+        margin-bottom: 1.7rem;
+        line-height: 1.85;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.15rem;
+        border: 1px solid var(--accent);
+        border-radius: 99px;
+        color: #100b16;
+        background: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        color: #d8b0fa;
+        background: transparent;
+      }
+
+      .button-secondary {
+        color: var(--text);
+        border-color: var(--line);
+        background: transparent;
+      }
+
+      .button-secondary:hover,
+      .button-secondary:focus-visible {
+        border-color: var(--accent);
+      }
+
+      .hero-art {
+        width: min(100%, 370px);
+        justify-self: end;
+        overflow: visible;
+        filter: drop-shadow(0 0 30px rgb(153 83 224 / 18%));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      .section {
+        padding-block: 4.5rem;
+        border-top: 1px solid var(--line);
+        scroll-margin-top: 68px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .section-number {
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-family: var(--sans);
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        font-weight: 750;
+        letter-spacing: -0.045em;
+      }
+
+      .section-copy {
+        max-width: 720px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        min-height: 150px;
+        padding: 1.4rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: linear-gradient(145deg, rgb(189 120 245 / 4%), transparent 65%), var(--surface);
+        transition:
+          border-color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: #59416c;
+      }
+
+      .card h3 {
+        margin-bottom: 0.5rem;
+        font-family: var(--sans);
+        font-size: 1.3rem;
+        font-weight: 650;
+      }
+
+      .card p,
+      .placeholder-note {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .skills-list li {
+        padding: 0.55rem 0.8rem;
+        border: 1px solid #30263c;
+        border-radius: 99px;
+        color: #d3c8e1;
+        background: rgb(189 120 245 / 5%);
+        font-size: 0.9rem;
+      }
+
+      .contact-panel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        padding: 1.6rem;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--surface);
+      }
+
+      .contact-panel p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: 1.5rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 700px) {
+        .page-shell {
+          width: min(100% - 2rem, 1060px);
+        }
+
+        .topbar {
+          min-height: 68px;
+        }
+
+        .nav-links {
+          gap: 0.9rem;
+        }
+
+        .nav-links a {
+          font-size: 0.78rem;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          min-height: auto;
+          padding-block: 4rem;
+        }
+
+        .hero-art {
+          width: min(65%, 270px);
+          justify-self: center;
+        }
+
+        .section {
+          padding-block: 3rem;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-panel {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.6rem;
+          padding-block: 0.8rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          gap: 1rem;
+          overflow-x: auto;
+          padding-bottom: 0.2rem;
+        }
+
+        .nav-links a {
+          flex: 0 0 auto;
+          font-size: 0.65rem;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-shell topbar">
+      <a class="monogram" href="#home" aria-label="Abdelrahman Bahaa, home">A · B</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#courses">Courses</a>
+        <a href="#languages">Languages</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-shell hero" id="home">
+        <div>
+          <p class="availability">Portfolio &amp; CV</p>
+          <h1>Abdelrahman <span>Bahaa</span></h1>
+          <p class="hero-role">Agricultural Engineer</p>
+          <p class="hero-location">New Valley, Egypt</p>
+          <p class="hero-description">
+            Practical experience in date palm operations and crop management.
+            Currently pursuing a Master’s degree in Horticulture, with a focus
+            on improving agricultural productivity across different crops.
+          </p>
+          <div class="actions">
+            <a class="button" href="#contact">Get in touch</a>
+            <a class="button button-secondary" href="#experience">Explore my CV</a>
+          </div>
+        </div>
+        <svg class="hero-art" viewBox="0 0 360 360" aria-hidden="true">
+          <defs>
+            <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e0b1ff" />
+              <stop offset="0.52" stop-color="#b96cf2" />
+              <stop offset="1" stop-color="#7140b9" />
+            </linearGradient>
+            <linearGradient id="violet-dark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5a3784" />
+              <stop offset="1" stop-color="#21172e" />
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="#a969e3" stroke-opacity=".32" stroke-width="1">
+            <path d="M45 85 112 133 172 95 230 142 300 82" />
+            <path d="M58 254 125 208 192 255 260 215 318 260" />
+            <path d="m112 133 13 75m47-113 20 160m38-113 30 73" />
+          </g>
+          <g fill="#d69aff">
+            <circle cx="45" cy="85" r="4" /><circle cx="112" cy="133" r="5" />
+            <circle cx="172" cy="95" r="4" /><circle cx="230" cy="142" r="5" />
+            <circle cx="300" cy="82" r="4" /><circle cx="58" cy="254" r="4" />
+            <circle cx="125" cy="208" r="5" /><circle cx="192" cy="255" r="4" />
+            <circle cx="260" cy="215" r="5" /><circle cx="318" cy="260" r="4" />
+          </g>
+          <g stroke="url(#violet)" stroke-linejoin="round" stroke-width="2">
+            <path d="m83 164 30-10 10 96-31 11z" fill="url(#violet-dark)" />
+            <path d="m83 164 23-7 10 92-24 12z" fill="#392653" />
+            <path d="m188 62 34 5 14 186-37-18z" fill="url(#violet-dark)" />
+            <path d="m188 62 25 4 11 172-25-8z" fill="#4a2d6c" />
+            <path d="m147 188 47-57 30 21-45 58z" fill="url(#violet-dark)" />
+            <path d="m147 188 47-57 19 11-42 52z" fill="#684092" />
+            <path d="m121 119 14-11 61 62-16 13z" fill="url(#violet-dark)" />
+            <path d="m121 119 14-11 50 52-11 8z" fill="#5c3881" />
+          </g>
+          <text
+            x="180"
+            y="320"
+            fill="#8f7ba5"
+            font-family="Segoe UI, Arial, sans-serif"
+            font-size="11"
+            letter-spacing="4"
+            text-anchor="middle"
+          >A · B</text>
+        </svg>
+      </section>
+
+      <section class="page-shell section" id="about">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <h2>About me</h2>
+        </div>
+        <p class="section-copy">
+          Agricultural Engineer with 8 months of practical experience as an
+          Executive Agricultural Engineer at a date palm farm, responsible for
+          agricultural operations and crop management. Currently pursuing a
+          Master’s degree, with strong problem-solving skills, the ability to
+          work effectively under pressure, adaptability, and a commitment to
+          continuous learning and improving agricultural productivity across
+          different crops.
+        </p>
+      </section>
+
+      <section class="page-shell section" id="skills">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <h2>Skills</h2>
+        </div>
+        <ul class="skills-list" aria-label="Professional skills">
+          <li>Crop Management</li>
+          <li>Irrigation &amp; Fertilization</li>
+          <li>Pest and Disease Management</li>
+          <li>Problem-Solving</li>
+          <li>Teamwork</li>
+          <li>Working Under Pressure</li>
+          <li>Interpersonal Skills</li>
+          <li>Microsoft Office</li>
+          <li>Agricultural Research</li>
+          <li>Effective Communication</li>
+        </ul>
+      </section>
+
+      <section class="page-shell section" id="education">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <h2>Education</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Bachelor’s Degree in Agricultural Sciences</h3>
+            <p>Genetic Engineering Department<br />New Valley University | 2025</p>
+          </article>
+          <article class="card">
+            <h3>Master’s Degree in Horticulture</h3>
+            <p>Fruit Science Specialization<br />New Valley University | Currently Pursuing</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-shell section" id="experience">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <h2>Experience</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Agricultural Specialist</h3>
+            <p>
+              Date palm farm · 8 months<br />
+              Managed daily date palm operations, implementing effective
+              irrigation and fertilization schedules to optimize plant health
+              and yield. Monitored crop health to identify pests and diseases
+              early, applying integrated pest management strategies to minimize
+              crop loss and enhance overall quality.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-shell section" id="courses">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <h2>Courses &amp; training</h2>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Integrated Pest Management for Red Palm Weevil</h3>
+            <p>
+              Agricultural Pesticide Committee (APC), Ministry of Agriculture
+              and Land Reclamation<br />
+              September 2023 – September 2026
+            </p>
+          </article>
+          <article class="card">
+            <h3>Specialized Technical Training Course</h3>
+            <p>Agricultural training</p>
+          </article>
+          <article class="card">
+            <h3>Health and Safety Course</h3>
+            <p>Career Development Center – American Chamber of Commerce in Egypt (AmCham) · October 2024</p>
+          </article>
+          <article class="card">
+            <h3>Employability Skills Track</h3>
+            <p>Aspire Consulting and Training (supported by USAID &amp; AUC) · November 2024</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page-shell section" id="languages">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <h2>Languages</h2>
+        </div>
+        <ul class="skills-list" aria-label="Languages">
+          <li>Arabic — Native</li>
+          <li>English — Intermediate</li>
+        </ul>
+      </section>
+
+      <section class="page-shell section" id="contact">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <h2>Let’s connect</h2>
+        </div>
+        <div class="contact-panel">
+          <div>
+            <p><a href="mailto:abdelrahmanba305@gmail.com">abdelrahmanba305@gmail.com</a></p>
+            <p><a href="tel:+201220921868">01220921868</a></p>
+          </div>
+          <span class="button button-secondary">New Valley, Egypt</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-shell footer">
+      <span>Abdelrahman Bahaa</span>
+      <span>New Valley, Egypt</span>
+      <span>© <span id="year">2026</span></span>
+    </footer>
+  </body>
+</html>
